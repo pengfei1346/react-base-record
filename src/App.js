@@ -1,27 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ReactDom from 'react-dom';
+import {Provider} from 'react-redux';
+import store from './redux/store';
+import {HashRouter as Router} from 'react-router-dom';
+import App from 'components/App/App';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p className="top">111</p>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+ReactDom.render(
+  <Provider store={store}>
+    <Router>
+      <App/>
+    </Router>
+  </Provider>,
+  document.getElementById('app')
+);
